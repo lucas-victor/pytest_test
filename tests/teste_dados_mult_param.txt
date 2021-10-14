@@ -1,0 +1,6 @@
+CN=123;parm10=param_valor{parametro_11:valor_11}param_valor{parametro_12:valor_12}param_valor{parametro_13:valor_13}
+SID=456
+X=789
+param1=valor1
+param2=valor2
+param3=valor3
