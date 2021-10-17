@@ -20,7 +20,7 @@ def carrega_dados():
     lista = []
     #dic2 = {'param_nome_test': 'valor_nome_test'}
     tup = ()
-    with open('teste_dados.txt') as arq:
+    with open('tests/teste_dados.txt') as arq:
         for line in arq:
             param_valor = line.split('=')
             parm = param_valor[0]

@@ -1,6 +1,6 @@
 from pytest import mark
 
-from tests.test_parametrize import carrega_dados
+from test_parametrize import carrega_dados
 
 """
 @mark.parametrize("number", [1,2])

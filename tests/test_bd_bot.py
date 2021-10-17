@@ -46,7 +46,7 @@ def test_servaprov_por_regra_enriqucimento():
     cursor = con.cursor()
     cursor.execute(querystring)
     
-    #result_one_line = cursor.fetchone()
+    result_one_line = cursor.fetchone()
 
     #df = pd.read_sql_query(querystring, con)
     #print(result_one_line)
@@ -55,7 +55,7 @@ def test_servaprov_por_regra_enriqucimento():
     #for campo in df.values:
     #    print(campo)
 
-
+    count = 0
     if result_one_line == None:
         print("Nenhum resultado para a query realizada.")
         exit()
