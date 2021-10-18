@@ -1,3 +1,5 @@
+from numpy import empty
+from numpy.core.fromnumeric import shape
 from pytest import mark
 import cx_Oracle
 import pandas as pd
@@ -11,16 +13,16 @@ import pytest
 
 PLANO_DE_TESTE = "../PLANO_TESTE/plano_de_teste_automatizado.ods"
 
-sa = 'INSTALAR_INFRA_NASS'
+#sa = 'INSTALAR_INFRA_NASS'
 regra_enrich_global = 'LineIdIptv'
 server = "sisdx06"
 
-sa_x_enrich_rule_query = f"""select 
+sa_x_enrich_rule_query = """select 
     sa.cd_serv_aprov, re.cd_regra_enriq, rs.ordem_execucao
     from sisapr.tbservicapro sa
     join sisapr.rserviapreen rs on rs.id_serv_aprov = sa.id_serv_aprov 
     join sisapr.tbregraenriq re on re.id_regra_enriq = rs.id_regra_enriq
-    where sa.cd_serv_aprov like '{sa}'"""
+    where sa.cd_serv_aprov like '{sa}' and re.cd_regra_enriq like '{re}'"""
 
 
 def get_connection(server_name):
@@ -59,7 +61,9 @@ def get_plano_teste():
     print(os.getcwd())
     df = pd.read_excel(PLANO_DE_TESTE)
     # print(df)
-    replaced_df = df.fillna("-").replace(0.0, 0)
+    replaced_df = df.fillna("-") #.replace(0.0, 0)
+    #df[list("ABCD")] = df[list("ABCD")].fillna(0.0).astype(int)
+
     #replaced_df = replaced_df.replace(0.0, 0)
     # print(replaced_df)
     #achou_regra_recuperada = df.loc[df["CD_REGRA_ENRIQ"] == "LineIdIptv"]
@@ -114,7 +118,7 @@ def est_sa_x_regra_enrich():
         sa_ct, re_ct, ord_exec = get_caso_de_teste(linha, plano_de_teste_df)
         #print(sa_ct, re_ct, ord_exec)
 
-        df_result_query = select_sa_x_enrich_rule_2(sa_ct)
+        df_result_query = executa_query_bd(sa_ct)
         print(f"Printando display {linha}")
         display(df_result_query)
         assert_enrich_rule(re_ct, df_result_query)
@@ -136,10 +140,14 @@ def assert_enrich_rule(re_ct, ord_exec_ct, df: DataFrame):
     print(f"\n------> Resultado esperado: {re_ct} {ord_exec_ct}")
     print(f"------> Resultado Atual: {regra_enrich_do_bd[0]} {ord_exec_do_bd}")
     #print("------> Realizando o assert da regra")
-
+    display(achou_regra_ord_exec)
+    #solucao paleativa para o warning de lista vazia no assert
+    if ord_exec_do_bd.size == 0:
+        ord_exec_do_bd = ""
+    
     assert re_ct == regra_enrich_do_bd
     
-    if ord_exec_ct != "-" and ord_exec_do_bd.size > 0:
+    if ord_exec_ct != "-":   
         assert ord_exec_ct == ord_exec_do_bd
 
 
@@ -154,8 +162,7 @@ def select_sa_x_enrich_rule(sa):
             print("Regras encontradas para o serviço: ")
             display(df)
 
-            achou_regra_enrich = df.loc[df["CD_REGRA_ENRIQ"]
-                                        == regra_enrich_global]
+            achou_regra_enrich = df.loc[df["CD_REGRA_ENRIQ"] == regra_enrich_global]
             #print(f"a regra foi localizada?  \n{achou_regra_enrich}")
 
             regra_do_bd = achou_regra_enrich["CD_REGRA_ENRIQ"].get(0)
@@ -171,15 +178,15 @@ def select_sa_x_enrich_rule(sa):
                 f"Resultado esperado: {regra_enrich_global} - Resultado atual: {regra_do_bd}", exc_info=True)
 
 
-def select_sa_x_enrich_rule_2(sa):
+def executa_query_bd(sql):
     """
-        Realiza o select no banco configurado e faz a validação dos dados recebidos.
+        Realiza o select no banco configurado e retorna o resultado.
     """
-    query_preparada = sa_x_enrich_rule_query.format(sa)
+    #query_preparada = sa_x_enrich_rule_query.format(sa = serv_aprov, re = regra_enrich)
     try:
         with get_connection(server) as db_con:
             print("------> Executando query no banco...")
-            df = pd.read_sql_query(query_preparada, db_con)
+            df = pd.read_sql_query(sql, db_con)
             return df
     except Exception as e:
         print(
@@ -233,6 +240,9 @@ def get_testcases_sa_x_enrich():
         Carrega o plano de teste inteiro e retorna um DataFrame com as colunas serv_aprov, regra_enrich, ord_exec 
     """
     df_plano_de_teste = get_plano_teste()
+    print("Alterando o tipo da coluna ORDEM_EXECUCAO")
+    #df_plano_de_teste["ORDEM_EXECUCAO"].fillna(0.0).astype(int)
+    #display(df_plano_de_teste)
     list_params_configurados = []
     for line in df_plano_de_teste.values:
         #cts_tup = (line[["CD_SERV_APROV","CD_REGRA_ENRIQ","ORDEM_EXECUCAO"]])
@@ -252,6 +262,9 @@ def get_testcases_sa_x_enrich():
     
 get_testcases_sa_x_enrich()
 
+def parametriza_sql_sa_x_regra_enrich(serv_aprov, regra_enrich):
+    return sa_x_enrich_rule_query.format(sa = serv_aprov, re = regra_enrich)
+
 
 @mark.parametrize ("ct_serv_aprov, ct_regra_enrich, ct_ord_exec", get_testcases_sa_x_enrich())
 def test_two(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):
@@ -262,9 +275,9 @@ def test_two(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):
         print("------> Caso de teste não possui regra de enriquecimento a ser testada.")
         pytest.skip()
     else:
-        df_result_query = select_sa_x_enrich_rule_2(ct_serv_aprov)
-        print(f"------> Resultado da query - RE x SA x OE:\n {df_result_query}")
-        
+        sql = parametriza_sql_sa_x_regra_enrich(ct_serv_aprov, ct_regra_enrich)
+        df_result_query = executa_query_bd(sql)
+        print(f"------> Resultado da query - RE x SA x OE:\n\n {df_result_query}")
         assert_enrich_rule(ct_regra_enrich, ct_ord_exec, df_result_query)
 
 
