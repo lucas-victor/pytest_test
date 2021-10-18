@@ -1,3 +1,4 @@
+from pytest import mark
 import cx_Oracle
 import pandas as pd
 import sys, os
@@ -5,6 +6,7 @@ import sys, os
 import logging
 from IPython.display import display
 from pandas.core.frame import DataFrame
+import pytest
 
 
 PLANO_DE_TESTE = "../PLANO_TESTE/plano_de_teste_automatizado.ods"
@@ -50,6 +52,9 @@ print(con)
 
 
 def get_plano_teste():
+    """
+        Busca o plano de teste inteiro na pasta configurada e retorna um DataFrame com os dados já tratados.
+    """
     # with open("PLANO_TESTE/plano_de_teste_automatizado.ods", "r") as plano:
     print(os.getcwd())
     df = pd.read_excel(PLANO_DE_TESTE)
@@ -71,6 +76,7 @@ def get_plano_teste():
 # get_plano_teste()
 
 
+
 def get_caso_de_teste(num_linha_ct, plano_de_teste_df: DataFrame):
     # plano_de_teste_df
     # for i in range(0, len(plano_de_teste_df)):
@@ -88,8 +94,18 @@ def get_caso_de_teste(num_linha_ct, plano_de_teste_df: DataFrame):
 
 # get_caso_de_teste(get_plano_teste())
 
+# @mark.parametrize("param, valor", carrega_dados())
+# def test_two(param, valor):
+#     print(param, valor)
+#     assert param, valor
 
-def test_sa_x_regra_enrich():
+# @mark.parametrize("ct_serv_aprov, ct_regra_enrich", carrega_dados())
+# def test_two(param, valor):
+#     print(param, valor)
+#     assert param, valor
+
+
+def est_sa_x_regra_enrich():
     plano_de_teste_df = get_plano_teste()
     query_sa_x_enrich_df = ""
 
@@ -101,20 +117,30 @@ def test_sa_x_regra_enrich():
         df_result_query = select_sa_x_enrich_rule_2(sa_ct)
         print(f"Printando display {linha}")
         display(df_result_query)
-        assert_regra(re_ct, df_result_query)
+        assert_enrich_rule(re_ct, df_result_query)
 
 
-def assert_regra(re_ct, df: DataFrame):
+def assert_enrich_rule(re_ct, ord_exec_ct, df: DataFrame):
 
-    if re_ct != "-":
-        achou_regra_enrich = df.loc[df["CD_REGRA_ENRIQ"] == re_ct]
-        print(f"a regra foi localizada?  \n{achou_regra_enrich}")
-        
-        regra_do_bd = achou_regra_enrich["CD_REGRA_ENRIQ"].values
-        print(f"\nBuscando regra: {re_ct}")
-        print("realizando o assert da regra")
-        print(f"Resultado esperado: {re_ct}\nResultado Atual: {regra_do_bd}")
-        assert re_ct == regra_do_bd
+    #if re_ct != "-":
+    achou_regra_enrich = df.loc[df["CD_REGRA_ENRIQ"] == re_ct]
+    achou_regra_ord_exec = df.loc[df["ORDEM_EXECUCAO"] == ord_exec_ct]
+    print(f"\n------> Regra localizada?  \n{achou_regra_enrich}")
+    #print(f"------> A ordem de execucao foi localizada?  \n{achou_regra_ord_exec}")
+    
+    
+
+    regra_enrich_do_bd = achou_regra_enrich["CD_REGRA_ENRIQ"].values
+    ord_exec_do_bd = achou_regra_ord_exec["ORDEM_EXECUCAO"].values
+    #print(f"\n------> Buscando regra: {re_ct}")
+    print(f"\n------> Resultado esperado: {re_ct} {ord_exec_ct}")
+    print(f"------> Resultado Atual: {regra_enrich_do_bd[0]} {ord_exec_do_bd}")
+    #print("------> Realizando o assert da regra")
+
+    assert re_ct == regra_enrich_do_bd
+    
+    if ord_exec_ct != "-" and ord_exec_do_bd.size > 0:
+        assert ord_exec_ct == ord_exec_do_bd
 
 
 def select_sa_x_enrich_rule(sa):
@@ -152,15 +178,15 @@ def select_sa_x_enrich_rule_2(sa):
     query_preparada = sa_x_enrich_rule_query.format(sa)
     try:
         with get_connection(server) as db_con:
-            print("realizando select no banco. SA x RE")
+            print("------> Executando query no banco...")
             df = pd.read_sql_query(query_preparada, db_con)
             return df
     except Exception as e:
         print(
-            f"Não foi possível estabelecer conexão com o banco {server} \n {e}")
+            f"------> Não foi possível estabelecer conexão com o banco {server} \n {e}")
 
 
-test_sa_x_regra_enrich()
+# test_sa_x_regra_enrich()
 # print(sa_x_enrich_rule_query.format(sa))
 # select_sa_x_enrich_rule_2()
 
@@ -169,7 +195,7 @@ test_sa_x_regra_enrich()
 # select_sa_x_enrich_rule()
 
 
-def test_db_connect():
+def est_db_connect():
     df = pd.read_sql_query(sa_x_enrich_rule_query, get_connection(server))
     print("Todos os dados retornados pelo select: ")
     display(df)
@@ -200,6 +226,48 @@ def test_db_connect():
         #print(f"printando NÂO achou \n{achou_regra_enrich}")
 
      # return df
+
+
+def get_testcases_sa_x_enrich():
+    """
+        Carrega o plano de teste inteiro e retorna um DataFrame com as colunas serv_aprov, regra_enrich, ord_exec 
+    """
+    df_plano_de_teste = get_plano_teste()
+    list_params_configurados = []
+    for line in df_plano_de_teste.values:
+        #cts_tup = (line[["CD_SERV_APROV","CD_REGRA_ENRIQ","ORDEM_EXECUCAO"]])
+        print(line)
+        list_params_configurados.append(line)
+    
+    print(list_params_configurados)
+    serv_aprov = df_plano_de_teste["CD_SERV_APROV"]
+    regra_enrich = df_plano_de_teste["CD_REGRA_ENRIQ"]
+    ord_exec = df_plano_de_teste["ORDEM_EXECUCAO"]
+    #df_sa_x_regra_enrich = [[serv_aprov, regra_enrich, ord_exec]]
+    #print(serv_aprov)
+    #print(regra_enrich)
+    #print(ord_exec)
+    #return df_sa_x_regra_enrich
+    return list_params_configurados
+    
+get_testcases_sa_x_enrich()
+
+
+@mark.parametrize ("ct_serv_aprov, ct_regra_enrich, ct_ord_exec", get_testcases_sa_x_enrich())
+def test_two(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):
+    print(f"------> Teste SA x RE x OE")
+    print(f"------> parametros: SA: {ct_serv_aprov}, RE:{ct_regra_enrich}, OE: {ct_ord_exec}")
+    
+    if ct_regra_enrich == "-":
+        print("------> Caso de teste não possui regra de enriquecimento a ser testada.")
+        pytest.skip()
+    else:
+        df_result_query = select_sa_x_enrich_rule_2(ct_serv_aprov)
+        print(f"------> Resultado da query - RE x SA x OE:\n {df_result_query}")
+        
+        assert_enrich_rule(ct_regra_enrich, ct_ord_exec, df_result_query)
+
+
 
 
 # test_db_connect()

@@ -243,7 +243,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 17-Oct-2021 at 21:57:28 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 17-Oct-2021 at 21:22:17 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -259,8 +259,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.8.10</td></tr></table>
     <h2>Summary</h2>
-    <p>2 tests ran in 2.02 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">2 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">1 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>3 tests ran in 2.09 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">2 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -271,30 +271,18 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="skipped results-table-row">
+      <tbody class="failed results-table-row">
         <tr>
-          <td class="col-result">Skipped</td>
-          <td class="col-name">sis_bot_BD/DbConnection.py::test_two[INSTALAR_INFRA_NASS----]</td>
-          <td class="col-duration">0.00</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/DbConnection.py&#x27;, 263, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
-------&gt; parametros: SA: INSTALAR_INFRA_NASS, RE:-, OE: -
-------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
-<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
+          <td class="col-result">Failed</td>
           <td class="col-name">sis_bot_BD/DbConnection.py::test_two[INSTALAR_INFRA_NASS-LineIdIptv-0]</td>
-          <td class="col-duration">0.65</td>
+          <td class="col-duration">0.73</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
-------&gt; parametros: SA: INSTALAR_INFRA_NASS, RE:LineIdIptv, OE: 0
+            <div class="log">ct_serv_aprov = &#x27;INSTALAR_INFRA_NASS&#x27;, ct_regra_enrich = &#x27;LineIdIptv&#x27;, ct_ord_exec = 0<br/><br/>    @mark.parametrize (&quot;ct_serv_aprov, ct_regra_enrich, ct_ord_exec&quot;, get_testcases_sa_x_enrich())<br/>    def test_two(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):<br/>        if ct_regra_enrich != &quot;-&quot;:<br/>            print(f&quot;------&gt; Teste do SA: {ct_serv_aprov} X RE: {ct_regra_enrich}&quot;)<br/>            print(ct_serv_aprov, ct_regra_enrich, ct_ord_exec)<br/>    <br/>            #plano_de_teste_df = get_plano_teste()<br/>            #query_sa_x_enrich_df = &quot;&quot;<br/>            df_result_query = select_sa_x_enrich_rule_2(ct_serv_aprov)<br/>            print(f&quot;------&gt; Resultado da query - RE x SA:\n {df_result_query}&quot;)<br/>    <br/>            #display(df_result_query)<br/>    <br/>&gt;           assert_enrich_rule(ct_regra_enrich, ct_ord_exec, df_result_query)<br/><br/>DbConnection.py:268: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>re_ct = &#x27;LineIdIptv&#x27;, ord_exec_ct = 0<br/>df =          CD_SERV_APROV           CD_REGRA_ENRIQ ORDEM_EXECUCAO<br/>0  INSTALAR_INFRA_NASS               LineIdIptv        ...TALAR_INFRA_NASS      LineIdHsiValidation           None<br/>3  INSTALAR_INFRA_NASS         VelocidadeBasica           None<br/><br/>    def assert_enrich_rule(re_ct, ord_exec_ct, df: DataFrame):<br/>    <br/>        #if re_ct != &quot;-&quot;:<br/>        achou_regra_enrich = df.loc[df[&quot;CD_REGRA_ENRIQ&quot;] == re_ct]<br/>        achou_regra_ord_exec = df.loc[df[&quot;ORDEM_EXECUCAO&quot;] == ord_exec_ct]<br/>        print(f&quot;\n------&gt; Regra localizada?  \n{achou_regra_enrich}&quot;)<br/>        #print(f&quot;------&gt; A ordem de execucao foi localizada?  \n{achou_regra_ord_exec}&quot;)<br/>    <br/>    <br/>    <br/>        regra_enrich_do_bd = achou_regra_enrich[&quot;CD_REGRA_ENRIQ&quot;].values<br/>        ord_exec_do_bd = achou_regra_ord_exec[&quot;ORDEM_EXECUCAO&quot;].values<br/>        #print(f&quot;\n------&gt; Buscando regra: {re_ct}&quot;)<br/>        print(f&quot;\n------&gt; Resultado esperado: {re_ct} {ord_exec_ct}&quot;)<br/>        print(f&quot;------&gt; Resultado Atual: {regra_enrich_do_bd[0]} {ord_exec_do_bd}&quot;)<br/>        #print(&quot;------&gt; Realizando o assert da regra&quot;)<br/>    <br/>        assert re_ct == regra_enrich_do_bd<br/>    <br/>        if ord_exec_ct != &quot;-&quot;:<br/>&gt;           assert ord_exec_ct == ord_exec_do_bd<br/><span class="error">E           assert 0 == array([], dtype=object)</span><br/><br/>DbConnection.py:142: AssertionError<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste do SA: INSTALAR_INFRA_NASS X RE: LineIdIptv
+INSTALAR_INFRA_NASS LineIdIptv 0
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - RE x SA:
           CD_SERV_APROV           CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  INSTALAR_INFRA_NASS               LineIdIptv           None
 1  INSTALAR_INFRA_NASS  AcessoAssetIdValidation           None
@@ -311,15 +299,25 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">sis_bot_BD/DbConnection.py::test_two[INSTALAR_INFRA_NASS-VelocidadeBasica--]</td>
-          <td class="col-duration">0.65</td>
+          <td class="col-name">sis_bot_BD/DbConnection.py::test_two[INSTALAR_INFRA_NASS----]</td>
+          <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
-------&gt; parametros: SA: INSTALAR_INFRA_NASS, RE:VelocidadeBasica, OE: -
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>Caso de teste não possui regra de enriquecimento a ser testada!
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">sis_bot_BD/DbConnection.py::test_two[INSTALAR_INFRA_NASS-VelocidadeBasica--]</td>
+          <td class="col-duration">0.62</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste do SA: INSTALAR_INFRA_NASS X RE: VelocidadeBasica
+INSTALAR_INFRA_NASS VelocidadeBasica -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - RE x SA:
           CD_SERV_APROV           CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  INSTALAR_INFRA_NASS               LineIdIptv           None
 1  INSTALAR_INFRA_NASS  AcessoAssetIdValidation           None
