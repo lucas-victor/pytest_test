@@ -285,6 +285,8 @@ def get_testcases_sa_x_router():
     for line in df_router_preparado.values:
         #cts_tup = (line[["CD_SERV_APROV","CD_REGRA_ENRIQ","ORDEM_EXECUCAO"]])
         #print(line)
+
+
         list_params_configurados.append(line)
     
     print("lista: ", list_params_configurados)
