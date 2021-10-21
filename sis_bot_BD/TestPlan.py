@@ -71,7 +71,7 @@ class TestPlan:
 
     def get_testcases_sa_x_router(self):
         """
-            Carrega o plano de teste inteiro e retorna um DataFrame com as colunas
+            Carrega as colunas o plano de teste inteiro e retorna um DataFrame com as colunas
         """
         #df_router_preparado = self.df_test_plan[[CD_SERV_APROV, CD_REGRA_ROTEAM, CD_SERVIC_REDE, CD_ELEMEN_REDE, ORDEM_EXECUCAO]]
         self.df_params_for_list = self.df_test_plan[[CD_SERV_APROV, CD_REGRA_ROTEAM, CD_SERVIC_REDE, CD_ELEMEN_REDE, ORDEM_EXECUCAO_ROUTER]] 
@@ -115,7 +115,7 @@ class TestPlan:
 
 test = TestPlan(PLANO_DE_TESTE)
 
-test.get_testcases_sa_x_router()
+test.get_testcases_sa_x_router()           
 
 #test.get_testcase_router_rule()
 #test.get_testcases_enrich_rule()
