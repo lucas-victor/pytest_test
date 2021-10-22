@@ -3,7 +3,6 @@ from pandas.core.frame import DataFrame
 import pandas as pd
 
 
-
 from constantes import *
 #from sis_bot_BD.DbConnection import get_plano_teste
 
@@ -47,6 +46,24 @@ class TestPlan:
         
         #print(list_params_configurados)
         return self.list_param_values_preparados
+
+
+    """def get_testcases_sa_x_enrich(self):
+        ""
+            Carrega o plano de teste inteiro e retorna um DataFrame com as colunas serv_aprov, regra_enrich, ord_exec 
+        ""
+        self.df_params_for_list = self.df_test_plan[[]]
+        df_plano_de_teste = get_plano_teste()
+
+        list_params_configurados = []
+        for line in df_plano_de_teste.values:
+            #cts_tup = (line[["CD_SERV_APROV","CD_REGRA_ENRIQ","ORDEM_EXECUCAO"]])
+            print(line)
+            list_params_configurados.append(line)   
+        
+        #print(list_params_configurados)
+        return list_params_configurados"""
+
 
 
 
@@ -113,9 +130,14 @@ class TestPlan:
 
 
 
-test = TestPlan(PLANO_DE_TESTE)
 
-test.get_testcases_sa_x_router()           
+
+
+
+#
+# test = TestPlan(PLANO_DE_TESTE)
+
+#test.get_testcases_sa_x_router()           
 
 #test.get_testcase_router_rule()
 #test.get_testcases_enrich_rule()

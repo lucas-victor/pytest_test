@@ -1,12 +1,24 @@
-from pytest import mark
+from pytest import mark, fixture
 from IPython.display import display
 import pytest
-from sis_bot_BD.DbConnection import * #executa_query_db, parametriza_sql_sa_x_router_rule_query, parametriza_sql_sa_x_regra_enrich, assert_enrich_rule, get_testcases_sa_x_router                                        
+from sis_bot_BD.test_plan import *
+from sis_bot_BD.sql_query import *
+from sis_bot_BD.connection import *
+from sis_bot_BD.constantes import *
+#from sis_bot_BD.DbConnection import * #executa_query_db, parametriza_sql_sa_x_router_rule_query, parametriza_sql_sa_x_regra_enrich, assert_enrich_rule, get_testcases_sa_x_router                                        
 
 #import pytest
+"""
+@fixture
+def fixture_testplan():
+    return TestPlan(PLANO_DE_TESTE).get_plano_teste
+"""
+tp = TestPlan(PLANO_DE_TESTE)
+con = Connection("sisdx06")
+sql = SqlQuery(con)
 
 
-@mark.parametrize ("ct_serv_aprov, ct_regra_enrich, ct_ord_exec", get_testcases_sa_x_enrich())
+@mark.parametrize("ct_serv_aprov, ct_regra_enrich, ct_ord_exec", tp.get_testcases_enrich_rule())
 def test_sa_x_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):
     """
     Testa as regras de enriquecimento do serviço de aprovisionamento.
@@ -18,14 +30,14 @@ def test_sa_x_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):
         print("------> Caso de teste não possui regra de enriquecimento a ser testada.")
         pytest.skip()
     else:
-        sql = parametriza_sql_sa_x_regra_enrich(ct_serv_aprov, ct_regra_enrich)
-        df_result_query = executa_query_db(sql)
+        sql.parametriza_sql_sa_x_regra_enrich(ct_serv_aprov, ct_regra_enrich)
+        df_result_query = sql.executa_query_db(sql.get_sql_parametrizado_sa_x_enrich_rule())
         print(f"------> Resultado da query - RE x SA x OE:\n\n {df_result_query}")
-        assert_enrich_rule(ct_regra_enrich, ct_ord_exec, df_result_query)
+        tp.assert_enrich_rule(ct_regra_enrich, ct_ord_exec, df_result_query)
 
 
 
-@mark.parametrize ("ct_serv_aprov, ct_regra_router, ct_serv_rede, ct_elemen_rede, ct_ord_exec", get_testcases_sa_x_router())
+@mark.parametrize ("ct_serv_aprov, ct_regra_router, ct_serv_rede, ct_elemen_rede, ct_ord_exec", tp.get_testcases_sa_x_router())
 def test_sa_x_router_rule(ct_serv_aprov, ct_regra_router, ct_serv_rede, ct_elemen_rede, ct_ord_exec):
     """
     Testa as regras de roteamento do serviço de aprovisionamento.
@@ -38,8 +50,8 @@ def test_sa_x_router_rule(ct_serv_aprov, ct_regra_router, ct_serv_rede, ct_eleme
         print("------> Caso de teste não possui regra de enriquecimento a ser testada.")
         pytest.skip()
     else:
-        sql = parametriza_sql_sa_x_router_rule_query(ct_serv_aprov, ct_regra_router)
-        df_result_query = executa_query_db(sql)
+        sql.parametriza_sql_sa_x_router_rule_query(ct_serv_aprov, ct_regra_router)
+        df_result_query = sql.executa_query_db(sql.get_sql_parametrizado_sa_x_router_rule())
         print(f"------> Resultado da query - SA x RR x SR x ELR x OE\n") #{df_result_query}
         display(df_result_query)
         #assert_enrich_rule(ct_regra_enrich, ct_ord_exec, df_result_query)

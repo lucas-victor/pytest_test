@@ -12,26 +12,30 @@ SISDX09='sis/sis@10.61.47.147/sisdev9'
 
 class Connection:
 
-    def __init__(self):
-        pass
+    def __init__(self, server_name):
+        self.server_name = server_name
 
-    def get_connection(self, server_name):
-        if server_name.lower() == "sisdx02":
+    @property
+    def get_server_name(self):
+        return self.server_name
+
+    def get_connection(self):
+        if self.server_name.lower() == "sisdx02":
             return cx_Oracle.connect(SISDX02)
-        elif server_name.lower() == "sisdx03":
+        elif self.server_name.lower() == "sisdx03":
             return cx_Oracle.connect(SISDX03)
-        elif server_name.lower() == "sisdx04":
+        elif self.server_name.lower() == "sisdx04":
             return cx_Oracle.connect(SISDX04)
-        elif server_name.lower() == "sisdx05":
+        elif self.server_name.lower() == "sisdx05":
             return cx_Oracle.connect(SISDX05)
-        elif server_name.lower() == "sisdx06":
+        elif self.server_name.lower() == "sisdx06":
             return cx_Oracle.connect(SISDX06)
-        elif server_name.lower() == "sisdx07":
+        elif self.server_name.lower() == "sisdx07":
             return cx_Oracle.connect(SISDX07)
-        elif server_name.lower() == "sisdx08":
+        elif self.server_name.lower() == "sisdx08":
             return cx_Oracle.connect(SISDX08)
-        elif server_name.lower() == "sisdx09":
+        elif self.server_name.lower() == "sisdx09":
             return cx_Oracle.connect(SISDX09)
         else:
             print(
-                f"Nome do servidor inválido: {server_name}. Verifique a string de conexão!")
+                f"Nome do servidor inválido: {self.server_name}. Verifique a string de conexão!")
