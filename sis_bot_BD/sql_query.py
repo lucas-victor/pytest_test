@@ -1,7 +1,7 @@
 from IPython.display import display
 from sis_bot_BD.connection import Connection
 
-from sis_bot_BD.test_plan import *
+from sis_bot_BD.plano_test import *
 from sis_bot_BD.sql_query import *
 from sis_bot_BD.connection import *
 from sis_bot_BD.constantes import *
@@ -28,33 +28,18 @@ class SqlQuery:
     def get_sql_parametrizado_sa_x_router_rule(self):
         return self.__string_sql
 
+    def _read_sql_query_pd(self, query_preparada, db_con):
+        self.df_result_sql = pd.read_sql_query(query_preparada, db_con)
+        return self.df_result_sql
 
-    def select_sa_x_enrich_rule(self, name_server, sa):
-        """
-            Realiza o select no banco configurado e faz a validação dos dados recebidos.
-        """
-        query_preparada = SA_X_ENRICH_QUERY.format(sa)
-        with self.connection.get_connection(name_server) as db_con:
-            try:
-                df = pd.read_sql_query(query_preparada, db_con)
-                print("Regras encontradas para o serviço: ")
-                display(df)
+    def find_enrich_rule_no_df(self, nome_enrich_rule):
+        """ retorna linha do DataFrame referente à regra de enriquecimento """
+        return self.df_test_plan.loc[self.df_test_plan[CD_REGRA_ENRIQ] == nome_enrich_rule]
 
-                achou_regra_enrich = localiza_enrich_rule_no_df(df, regra_enrich_global)
-                
-                #print(f"a regra foi localizada?  \n{achou_regra_enrich}")
 
-                regra_do_bd = achou_regra_enrich["CD_REGRA_ENRIQ"].get(0)
-                print(f"\nBuscando regra: {regra_enrich_global}")
-                # print(regra_do_bd)
-                assert regra_enrich_global == regra_do_bd
-
-                print(f"\nRegra encontrada com sucesso!")
-                display(achou_regra_enrich)
-
-            except AssertionError:
-                logging.error(
-                    f"Resultado esperado: {regra_enrich_global} - Resultado atual: {regra_do_bd}", exc_info=True)
+    def find_ord_exec_no_df(self, ord_exec_enrich):
+        """ retorna linha do DataFrame referente à regra de roteamento """
+        return self.df_test_plan.loc[self.df_test_plan[ORDEM_EXECUCAO_ENRICH] == ord_exec_enrich]
 
 
     def executa_query_db(self):
@@ -70,3 +55,43 @@ class SqlQuery:
         except Exception as e:
             print(
                 f"------> Não foi possível estabelecer conexão com o banco {self.connection.server_name} \n {e}")
+
+
+"""
+
+    def select_sa_x_enrich_rule(self, name_server, sa):
+        ""
+            Realiza o select no banco configurado e faz a validação dos dados recebidos.
+        ""
+        #query_preparada = SA_X_ENRICH_QUERY.format(sa)
+        self.parametriza_sql_sa_x_regra_enrich()
+        sql_preparado = self.get_sql_parametrizado_sa_x_enrich_rule()
+
+        self.executa_query_db(sql_preparado)
+
+
+
+        with self.connection.get_connection() as db_con:
+            try:
+                self._read_sql_query_pd(sql_preparado, db_con)
+                print("Regras encontradas para o serviço: ")
+                display(df)
+
+                achou_regra_enrich = self.find_enrich_rule_no_df(regra_enrich_global)
+              
+                #print(f"a regra foi localizada?  \n{achou_regra_enrich}")
+
+                regra_do_bd = achou_regra_enrich["CD_REGRA_ENRIQ"].get(0)
+                print(f"\nBuscando regra: {regra_enrich_global}")
+                # print(regra_do_bd)
+                assert regra_enrich_global == regra_do_bd
+
+                print(f"\nRegra encontrada com sucesso!")
+                display(achou_regra_enrich)
+
+            except AssertionError:
+                logging.error(
+                    f"Resultado esperado: {regra_enrich_global} - Resultado atual: {regra_do_bd}", exc_info=True)
+
+"""
+    

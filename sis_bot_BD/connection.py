@@ -14,28 +14,51 @@ class Connection:
 
     def __init__(self, server_name):
         self.server_name = server_name
+        self.con: cx_Oracle = None
 
     @property
     def get_server_name(self):
         return self.server_name
 
-    def get_connection(self):
+    @property
+    def get_connection(self) -> cx_Oracle:
         if self.server_name.lower() == "sisdx02":
-            return cx_Oracle.connect(SISDX02)
+            self.con = cx_Oracle.connect(SISDX02)
+            return self.con
         elif self.server_name.lower() == "sisdx03":
-            return cx_Oracle.connect(SISDX03)
+            self.con = cx_Oracle.connect(SISDX03)
+            return self.con
         elif self.server_name.lower() == "sisdx04":
-            return cx_Oracle.connect(SISDX04)
+            self.con = cx_Oracle.connect(SISDX04)
+            return self.con
         elif self.server_name.lower() == "sisdx05":
-            return cx_Oracle.connect(SISDX05)
+            self.con = cx_Oracle.connect(SISDX05)
+            return self.con
         elif self.server_name.lower() == "sisdx06":
-            return cx_Oracle.connect(SISDX06)
+            self.con = cx_Oracle.connect(SISDX06)
+            return self.con
         elif self.server_name.lower() == "sisdx07":
-            return cx_Oracle.connect(SISDX07)
+            self.con = cx_Oracle.connect(SISDX07)
+            return self.con
         elif self.server_name.lower() == "sisdx08":
-            return cx_Oracle.connect(SISDX08)
+            self.con = cx_Oracle.connect(SISDX08)
+            return self.con
         elif self.server_name.lower() == "sisdx09":
-            return cx_Oracle.connect(SISDX09)
+            self.con = cx_Oracle.connect(SISDX09)
+            return self.con
         else:
             print(
                 f"Nome do servidor inválido: {self.server_name}. Verifique a string de conexão!")
+
+
+
+
+#conn = Connection("sisdx06")
+
+#print(conn.get_connection)
+
+
+#conn = cx_Oracle.connect(SISDX06)
+#print(f'printando conexao: {conn}')
+
+

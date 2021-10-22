@@ -1,7 +1,7 @@
 from pytest import mark, fixture
 from IPython.display import display
 import pytest
-from sis_bot_BD.test_plan import *
+from sis_bot_BD.plano_test import *
 from sis_bot_BD.sql_query import *
 from sis_bot_BD.connection import *
 from sis_bot_BD.constantes import *
@@ -11,9 +11,9 @@ from sis_bot_BD.constantes import *
 """
 @fixture
 def fixture_testplan():
-    return TestPlan(PLANO_DE_TESTE).get_plano_teste
+    return PlanoTeste(PLANO_DE_TESTE).get_plano_teste
 """
-tp = TestPlan(PLANO_DE_TESTE)
+tp = PlanoTeste(PLANO_DE_TESTE)
 con = Connection("sisdx06")
 sql = SqlQuery(con)
 
@@ -31,7 +31,7 @@ def test_sa_x_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):
         pytest.skip()
     else:
         sql.parametriza_sql_sa_x_regra_enrich(ct_serv_aprov, ct_regra_enrich)
-        df_result_query = sql.executa_query_db(sql.get_sql_parametrizado_sa_x_enrich_rule())
+        df_result_query = sql.executa_query_db()
         print(f"------> Resultado da query - RE x SA x OE:\n\n {df_result_query}")
         tp.assert_enrich_rule(ct_regra_enrich, ct_ord_exec, df_result_query)
 
@@ -51,7 +51,7 @@ def test_sa_x_router_rule(ct_serv_aprov, ct_regra_router, ct_serv_rede, ct_eleme
         pytest.skip()
     else:
         sql.parametriza_sql_sa_x_router_rule_query(ct_serv_aprov, ct_regra_router)
-        df_result_query = sql.executa_query_db(sql.get_sql_parametrizado_sa_x_router_rule())
+        df_result_query = sql.executa_query_db()
         print(f"------> Resultado da query - SA x RR x SR x ELR x OE\n") #{df_result_query}
         display(df_result_query)
         #assert_enrich_rule(ct_regra_enrich, ct_ord_exec, df_result_query)
