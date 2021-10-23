@@ -14,32 +14,44 @@ class SqlQuery:
         self.connection: Connection = connection
         self.df_result_sql: DataFrame = None
         self.__string_sql = ""
+        self.valor_recuperado_do_df = ""
 
+    @property
+    def get_result_sql(self):
+        return self.df_result_sql
+
+    @property
+    def get_sql_parametrizado_sa_x_enrich_rule(self):
+        return self.__string_sql
+
+    @property
+    def get_sql_parametrizado_sa_x_router_rule(self):
+        return self.__string_sql
 
     def parametriza_sql_sa_x_regra_enrich(self, serv_aprov, regra_enrich):
         self.__string_sql = SA_X_ENRICH_QUERY.format(sa = serv_aprov, re = regra_enrich)
 
     def parametriza_sql_sa_x_router_rule_query(self, serv_aprov, regra_rotea):
         self.__string_sql = SA_X_ROUTER_QUERY.format(sa = serv_aprov, rotea = regra_rotea)
-    
-    def get_sql_parametrizado_sa_x_enrich_rule(self):
-        return self.__string_sql
-    
-    def get_sql_parametrizado_sa_x_router_rule(self):
-        return self.__string_sql
 
     def _read_sql_query_pd(self, query_preparada, db_con):
         self.df_result_sql = pd.read_sql_query(query_preparada, db_con)
-        return self.df_result_sql
+        #self.df_result_sql = self.df_result_sql.where(self.df_result_sql==None, "-")
+        self.df_result_sql = self.df_result_sql.fillna("-")
+        #return self.df_result_sql
 
-    def find_enrich_rule_no_df(self, nome_enrich_rule):
-        """ retorna linha do DataFrame referente à regra de enriquecimento """
-        return self.df_test_plan.loc[self.df_test_plan[CD_REGRA_ENRIQ] == nome_enrich_rule]
+    # def _find_rule_no_df(self, nome_coluna, nome_rule):
+    #     """ retorna linha do DataFrame referente à regra de enriquecimento """
+    #     return self.df_result_sql.loc[self.df_result_sql[nome_coluna] == nome_rule]
+
+    # def find_enrich_rule_no_df(self, nome_enrich_rule):
+    #     """ retorna linha do DataFrame referente à regra de enriquecimento """
+    #     return self.df_result_sql.loc[self.df_result_sql[CD_REGRA_ENRIQ] == nome_enrich_rule]
 
 
-    def find_ord_exec_no_df(self, ord_exec_enrich):
-        """ retorna linha do DataFrame referente à regra de roteamento """
-        return self.df_test_plan.loc[self.df_test_plan[ORDEM_EXECUCAO_ENRICH] == ord_exec_enrich]
+    # def find_router_rule_no_df(self, nome_router_rule):
+    #     """ retorna linha do DataFrame referente à regra de roteamento """
+    #     return self.df_result_sql.loc[self.df_result_sql[CD_REGRA_ROTEAM] == nome_router_rule]
 
 
     def executa_query_db(self):
@@ -48,10 +60,10 @@ class SqlQuery:
         """
         #query_preparada = sa_x_enrich_rule_query.format(sa = serv_aprov, re = regra_enrich)
         try:
-            with self.connection.get_connection() as db_con:
+            with self.connection.get_connection as db_con:
                 print("------> Executando query no banco...")
-                df = pd.read_sql_query(self.__string_sql, db_con)
-                return df
+                self._read_sql_query_pd(self.__string_sql, db_con)
+                #return self.df_result_sql
         except Exception as e:
             print(
                 f"------> Não foi possível estabelecer conexão com o banco {self.connection.server_name} \n {e}")
@@ -71,7 +83,7 @@ class SqlQuery:
 
 
 
-        with self.connection.get_connection() as db_con:
+        with self.connection.get_connection as db_con:
             try:
                 self._read_sql_query_pd(sql_preparado, db_con)
                 print("Regras encontradas para o serviço: ")

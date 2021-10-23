@@ -1,30 +1,45 @@
-#strings de conexao dos ambientes(ip)
-SISDX02='sis/sis@10.61.47.138/sisdev2'
-SISDX03='sis/sis@10.61.47.141/sisdev3'
-SISDX04='sis/sis@10.61.47.142/sisdev4'
-SISDX05='sis/sis@10.61.47.140/sisdev5'
-SISDX06='sis/sis@10.61.47.144/sisdev6'
-SISDX07='sis/sis@10.61.47.145/sisdev7'
-SISDX08='sis/sis@10.61.47.146/sisdev8'
-SISDX09='sis/sis@10.61.47.147/sisdev9'
-
 PLANO_DE_TESTE = "../PLANO_TESTE/plano_de_teste_automatizado.ods"
 #PLANO_DE_TESTE = "PLANO_TESTE/plano_de_teste_automatizado.ods"
 
+#strings de conexao dos ambientes(tns)
+SISDX02='sis/sis@sisdev2-h1/sisdev2'
+SISDX03='sis/sis@sisdev3-h1/sisdev3'
+SISDX04='sis/sis@sisdev4-h1/sisdev4'
+SISDX05='sis/sis@sisdev5-h1/sisdev5'
+SISDX06='sis/sis@sisdev6-h1/sisdev6'
+SISDX07='sis/sis@sisdev7-h1/sisdev7'
+SISDX08='sis/sis@sisdev8-h1/sisdev8'
+SISDX09='sis/sis@sisdev9-h1/sisdev9'
+SISDX11='sis/sis@sisdev11-h1/sisdev11'
+SISDX12='sis/sis@sisdev12-h1/sisdev12'
+
+#strings de conexao dos ambientes(ip)  não funcionou com a cx_Oracle.
+# SISDX02='sis/sis@10.61.47.138/sisdev2'
+# SISDX03='sis/sis@10.61.47.141/sisdev3'
+# SISDX04='sis/sis@10.61.47.142/sisdev4'
+# SISDX05='sis/sis@10.61.47.140/sisdev5'
+# SISDX06='sis/sis@10.61.47.144/sisdev6'
+# SISDX07='sis/sis@10.61.47.145/sisdev7'
+# SISDX08='sis/sis@10.61.47.146/sisdev8'
+# SISDX09='sis/sis@10.61.47.147/sisdev9'
+
+
 #Colunas do aprovisionamento
 CD_SERV_APROV = "CD_SERV_APROV"
-    #enriquecimento
+#####enriquecimento
 CD_REGRA_ENRIQ = "CD_REGRA_ENRIQ"
 ORDEM_EXECUCAO = "ORDEM_EXECUCAO"
 ORDEM_EXECUCAO_ENRICH = "ORDEM_EXECUCAO_ENRICH"
 #ORDEM_EXECUCAO_ENRICH = 2
-    #roteamento
+
+#####roteamento
 CD_REGRA_ROTEAM = "CD_REGRA_ROTEAM"
 CD_SERVIC_REDE = "CD_SERVIC_REDE"
 CD_ELEMEN_REDE = "CD_ELEMEN_REDE"
-ORDEM_EXECUCAO = "ORDEM_EXECUCAO"
+#ORDEM_EXECUCAO = "ORDEM_EXECUCAO"
 ORDEM_EXECUCAO_ROUTER = "ORDEM_EXECUCAO_ROUTER"
 #ORDEM_EXECUCAO_ROUTER = 7 #posicao. campo mesmo nome.
+
 
 
 #Colunas da network
