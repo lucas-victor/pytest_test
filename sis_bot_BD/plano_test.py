@@ -128,32 +128,15 @@ class PlanoTeste:
     # INÍCIO DOS ASSERTS 
     def assert_enrich_rule(self, sa_ct, re_ct, ord_exec_ct, df: DataFrame):
         """ faz o assert da regra de enriquecimento """
-        
+        #pega 
         self._find_rule_no_df_testresult(CD_REGRA_ENRIQ, re_ct, df)
-        #achou_regra_ord_exec = self._find_rule_no_df(ORDEM_EXECUCAO_ENRICH, ord_exec_ct)
-        #display(self.df_test_case_result)
-        #pega valores dos campos do dataframe retornado do banco.
         
         serv_aprov_bd = self.get_valor_do_campo(0, 0, self.df_test_case_result)
         regra_enrich_do_bd = self.get_valor_do_campo(0, 1, self.df_test_case_result)
         ord_exec_do_bd = self.get_valor_do_campo(0, 2, self.df_test_case_result)
         
-        #serv_aprov_bd = self.get_valor_do_campo(0, CD_SERV_APROV, self.df_test_case_result)
-        #regra_enrich_do_bd = self.get_valor_do_campo(0, CD_REGRA_ENRIQ, self.df_test_case_result)
-        #breakpoint()
-        #ord_exec_do_bd = self.get_valor_do_campo(0, ORDEM_EXECUCAO, self.df_test_case_result)
-        #atencao para o erro da coluna de ordem de execucao
-        #regra_enrich_do_bd = achou_regra_enrich[CD_REGRA_ENRIQ].values
-        #ord_exec_do_bd = achou_regra_ord_exec[ORDEM_EXECUCAO_ENRICH].values
-       
         print(f"\n------> Resultado esperado: {sa_ct} {re_ct} {ord_exec_ct}")
         print(f"------> Resultado Atual:    {serv_aprov_bd} {regra_enrich_do_bd} {ord_exec_do_bd} \n\n")
-
-        # if ord_exec_do_bd.size == 0:
-        #     ord_exec_do_bd = ""
-        
-        # if ord_exec_ct == "-":
-        #     ord_exec_ct = ""
 
         assert re_ct == regra_enrich_do_bd
         assert ord_exec_ct == ord_exec_do_bd
