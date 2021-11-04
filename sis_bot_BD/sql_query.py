@@ -35,6 +35,7 @@ class SqlQuery:
         self.__string_sql = SA_X_ROUTER_QUERY.format(sa = serv_aprov, rotea = regra_rotea)
 
     def _read_sql_query_pd(self, query_preparada, db_con):
+        
         self.df_result_sql = pd.read_sql_query(query_preparada, db_con)
         #self.df_result_sql = self.df_result_sql.where(self.df_result_sql==None, "-")
         self.df_result_sql = self.df_result_sql.fillna("-")
@@ -61,12 +62,12 @@ class SqlQuery:
         #query_preparada = sa_x_enrich_rule_query.format(sa = serv_aprov, re = regra_enrich)
         try:
             with self.connection.get_connection as db_con:
-                print("------> Executando query no banco...")
+                print("--> Executando query no banco...")
                 self._read_sql_query_pd(self.__string_sql, db_con)
                 #return self.df_result_sql
         except Exception as e:
             print(
-                f"------> Não foi possível estabelecer conexão com o banco {self.connection.server_name} \n {e}")
+                f"--> Não foi possível estabelecer conexão com o banco {self.connection.server_name} \n {e}")
 
 
 """

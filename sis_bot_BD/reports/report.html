@@ -243,7 +243,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 23-Oct-2021 at 02:52:05 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 04-Nov-2021 at 18:28:28 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -259,8 +259,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.8.10</td></tr></table>
     <h2>Summary</h2>
-    <p>13 tests ran in 14.31 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">12 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">3 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>14 tests ran in 17.96 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">13 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">14 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -275,18 +275,23 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_SUSPEND_TEMPLATE-fheuasihfuiesahfuiehsai--]</td>
-          <td class="col-duration">0.79</td>
+          <td class="col-duration">1.02</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">ct_serv_aprov = &#x27;GPON_SUSPEND_TEMPLATE&#x27;, ct_regra_enrich = &#x27;fheuasihfuiesahfuiehsai&#x27;, ct_ord_exec = &#x27;-&#x27;<br/><br/>    @mark.parametrize(&quot;ct_serv_aprov, ct_regra_enrich, ct_ord_exec&quot;, tp.get_testcases_enrich_rule())<br/>    def test_sa_x_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):<br/>        &quot;&quot;&quot;<br/>        Testa as regras de enriquecimento do serviço de aprovisionamento.<br/>        &quot;&quot;&quot;<br/>        print(f&quot;------&gt; Teste SA x RE x OE&quot;)<br/>        print(f&quot;------&gt; parametros: SA: {ct_serv_aprov}, RE:{ct_regra_enrich}, OE: {ct_ord_exec}&quot;)<br/>    <br/>        if ct_regra_enrich == &quot;-&quot;:<br/>            print(&quot;------&gt; Caso de teste não possui regra de enriquecimento a ser testada.&quot;)<br/>            pytest.skip()<br/>        else:<br/>            sql.parametriza_sql_sa_x_regra_enrich(ct_serv_aprov, ct_regra_enrich)<br/>            sql.executa_query_db()<br/>            print(f&quot;------&gt; Resultado da query - RE x SA x OE:\n\n {sql.get_result_sql}&quot;)<br/>&gt;           tp.assert_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec, sql.get_result_sql)<br/><br/>test_sis_dbbot.py:36: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>plano_test.py:134: in assert_enrich_rule<br/>    serv_aprov_bd = self.get_valor_do_campo(0, 0, self.df_test_case_result)<br/>plano_test.py:47: in get_valor_do_campo<br/>    return df.iat[num_linha, num_coluna]<br/>../venv/lib/python3.8/site-packages/pandas/core/indexing.py:2222: in __getitem__<br/>    return self.obj._get_value(*key, takeable=self._takeable)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = Empty DataFrame<br/>Columns: [CD_SERV_APROV, CD_REGRA_ENRIQ, ORDEM_EXECUCAO]<br/>Index: [], index = 0, col = 0, takeable = True<br/><br/>    def _get_value(self, index, col, takeable: bool = False) -&gt; Scalar:<br/>        &quot;&quot;&quot;<br/>        Quickly retrieve single value at passed column and index.<br/>    <br/>        Parameters<br/>        ----------<br/>        index : row label<br/>        col : column label<br/>        takeable : interpret the index/col as indexers, default False<br/>    <br/>        Returns<br/>        -------<br/>        scalar<br/>    <br/>        Notes<br/>        -----<br/>        Assumes that index and columns both have ax._index_as_unique;<br/>        caller is responsible for checking.<br/>        &quot;&quot;&quot;<br/>        if takeable:<br/>            series = self._ixs(col, axis=1)<br/>&gt;           return series._values[index]<br/><span class="error">E           IndexError: index 0 is out of bounds for axis 0 with size 0</span><br/><br/>../venv/lib/python3.8/site-packages/pandas/core/frame.py:3566: IndexError<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
+            <div class="log">ct_serv_aprov = &#x27;GPON_SUSPEND_TEMPLATE&#x27;, ct_regra_enrich = &#x27;fheuasihfuiesahfuiehsai&#x27;, ct_ord_exec = &#x27;-&#x27;<br/><br/>    @mark.parametrize(&quot;ct_serv_aprov, ct_regra_enrich, ct_ord_exec&quot;, tp.get_testcases_enrich_rule())<br/>    def test_sa_x_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):<br/>        &quot;&quot;&quot;<br/>        Testa as regras de enriquecimento do serviço de aprovisionamento.<br/>        &quot;&quot;&quot;<br/>        print(f&quot;------&gt; Teste SA x RE x OE&quot;)<br/>        print(f&quot;------&gt; parametros: SA: {ct_serv_aprov}, RE:{ct_regra_enrich}, OE: {ct_ord_exec}&quot;)<br/>    <br/>        if ct_regra_enrich == &quot;-&quot;:<br/>            print(&quot;------&gt; Caso de teste não possui regra de enriquecimento a ser testada.&quot;)<br/>            pytest.skip()<br/>        else:<br/>            sql.parametriza_sql_sa_x_regra_enrich(ct_serv_aprov, ct_regra_enrich)<br/>            sql.executa_query_db()<br/>            print(f&quot;------&gt; Resultado da query - SA x RE x OE:\n\n {sql.get_result_sql}&quot;)<br/>&gt;           tp.assert_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec, sql.get_result_sql)<br/><br/>test_sis_dbbot.py:36: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;sis_bot_BD.plano_test.PlanoTeste object at 0x7f08a12f4c10&gt;, sa_ct = &#x27;GPON_SUSPEND_TEMPLATE&#x27;, re_ct = &#x27;fheuasihfuiesahfuiehsai&#x27;, ord_exec_ct = &#x27;-&#x27;, df = Empty DataFrame<br/>Columns: [CD_SERV_APROV, CD_REGRA_ENRIQ, ORDEM_EXECUCAO]<br/>Index: []<br/><br/>    def assert_enrich_rule(self, sa_ct, re_ct, ord_exec_ct, df: DataFrame):<br/>        &quot;&quot;&quot; faz o assert da regra de enriquecimento &quot;&quot;&quot;<br/>        #pega<br/>        self._find_rule_no_df_testresult(CD_REGRA_ENRIQ, re_ct, df)<br/>    <br/>        serv_aprov_bd = &quot;&quot;<br/>        regra_enrich_do_bd = &quot;&quot;<br/>        ord_exec_do_bd = &quot;&quot;<br/>    <br/>        if self.df_test_case_result.size != 0:<br/>            serv_aprov_bd = self.get_valor_do_campo(0, 0, self.df_test_case_result)<br/>            regra_enrich_do_bd = self.get_valor_do_campo(0, 1, self.df_test_case_result)<br/>            ord_exec_do_bd = self.get_valor_do_campo(0, 2, self.df_test_case_result)<br/>    <br/>        print(f&quot;\n------&gt; Resultado esperado: SA:{sa_ct} RE:{re_ct} OE:{ord_exec_ct}&quot;)<br/>        print(f&quot;------&gt; Resultado Atual:    SA:{serv_aprov_bd} RE:{regra_enrich_do_bd} OE:{ord_exec_do_bd} \n\n&quot;)<br/>    <br/>&gt;       assert re_ct == regra_enrich_do_bd<br/><span class="error">E       AssertionError</span><br/><br/>plano_test.py:146: AssertionError<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: GPON_SUSPEND_TEMPLATE, RE:fheuasihfuiesahfuiehsai, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
  Empty DataFrame
 Columns: [CD_SERV_APROV, CD_REGRA_ENRIQ, ORDEM_EXECUCAO]
 Index: []
+
+------&gt; Resultado esperado: SA:GPON_SUSPEND_TEMPLATE RE:fheuasihfuiesahfuiehsai OE:-
+------&gt; Resultado Atual:    SA: RE: OE: 
+
+
 <br/></div></td></tr></tbody>
       <tbody class="skipped results-table-row">
         <tr>
@@ -315,33 +320,165 @@ Index: []
       <tbody class="skipped results-table-row">
         <tr>
           <td class="col-result">Skipped</td>
-          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[-----]</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[INSTALAR_INFRA_NASS--------]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 31, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
-------&gt; parametros: SA: -, RE:-, OE: -
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:INSTALAR_INFRA_NASS, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_CFG_SERVICE--------0]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_CFG_SERVICE, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_CFG_SERVICE--------1]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_CFG_SERVICE, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_CFG_SERVICE--------2]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_CFG_SERVICE, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_MODIFY_SERVICE--------0]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_MODIFY_SERVICE, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_MODIFY_SERVICE--------1]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_MODIFY_SERVICE, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_MODIFY_SERVICE--------2]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_MODIFY_SERVICE, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_ONT_RESET--------]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_ONT_RESET, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_SUSPEND_TEMPLATE--------0]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_SUSPEND_TEMPLATE, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_SUSPEND_TEMPLATE--------1]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_SUSPEND_TEMPLATE, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_SUSPEND_TEMPLATE--------2]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_SUSPEND_TEMPLATE, RR:-, SR:-, ELR:-, OE: -
+------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_SUSPEND_TEMPLATE--------3]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 51, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:GPON_SUSPEND_TEMPLATE, RR:-, SR:-, ELR:-, OE: -
 ------&gt; Caso de teste não possui regra de enriquecimento a ser testada.
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[INSTALAR_INFRA_NASS-LineIdIptv--]</td>
-          <td class="col-duration">1.16</td>
+          <td class="col-duration">0.78</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: INSTALAR_INFRA_NASS, RE:LineIdIptv, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
           CD_SERV_APROV CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  INSTALAR_INFRA_NASS     LineIdIptv              -
 
-------&gt; Resultado esperado: INSTALAR_INFRA_NASS LineIdIptv -
-------&gt; Resultado Atual:    INSTALAR_INFRA_NASS LineIdIptv - 
+------&gt; Resultado esperado: SA:INSTALAR_INFRA_NASS RE:LineIdIptv OE:-
+------&gt; Resultado Atual:    SA:INSTALAR_INFRA_NASS RE:LineIdIptv OE:- 
 
 
 <br/></div></td></tr></tbody>
@@ -349,20 +486,20 @@ Index: []
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[INSTALAR_INFRA_NASS-VelocidadeBasica--]</td>
-          <td class="col-duration">0.63</td>
+          <td class="col-duration">0.94</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: INSTALAR_INFRA_NASS, RE:VelocidadeBasica, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
           CD_SERV_APROV    CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  INSTALAR_INFRA_NASS  VelocidadeBasica              -
 
-------&gt; Resultado esperado: INSTALAR_INFRA_NASS VelocidadeBasica -
-------&gt; Resultado Atual:    INSTALAR_INFRA_NASS VelocidadeBasica - 
+------&gt; Resultado esperado: SA:INSTALAR_INFRA_NASS RE:VelocidadeBasica OE:-
+------&gt; Resultado Atual:    SA:INSTALAR_INFRA_NASS RE:VelocidadeBasica OE:- 
 
 
 <br/></div></td></tr></tbody>
@@ -370,20 +507,20 @@ Index: []
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_CFG_SERVICE-RackDefinition--]</td>
-          <td class="col-duration">0.67</td>
+          <td class="col-duration">1.05</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: GPON_CFG_SERVICE, RE:RackDefinition, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
        CD_SERV_APROV  CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  GPON_CFG_SERVICE  RackDefinition              -
 
-------&gt; Resultado esperado: GPON_CFG_SERVICE RackDefinition -
-------&gt; Resultado Atual:    GPON_CFG_SERVICE RackDefinition - 
+------&gt; Resultado esperado: SA:GPON_CFG_SERVICE RE:RackDefinition OE:-
+------&gt; Resultado Atual:    SA:GPON_CFG_SERVICE RE:RackDefinition OE:- 
 
 
 <br/></div></td></tr></tbody>
@@ -391,20 +528,20 @@ Index: []
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_CFG_SERVICE-NumeroOsDefinition--]</td>
-          <td class="col-duration">1.20</td>
+          <td class="col-duration">1.28</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: GPON_CFG_SERVICE, RE:NumeroOsDefinition, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
        CD_SERV_APROV      CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  GPON_CFG_SERVICE  NumeroOsDefinition              -
 
-------&gt; Resultado esperado: GPON_CFG_SERVICE NumeroOsDefinition -
-------&gt; Resultado Atual:    GPON_CFG_SERVICE NumeroOsDefinition - 
+------&gt; Resultado esperado: SA:GPON_CFG_SERVICE RE:NumeroOsDefinition OE:-
+------&gt; Resultado Atual:    SA:GPON_CFG_SERVICE RE:NumeroOsDefinition OE:- 
 
 
 <br/></div></td></tr></tbody>
@@ -412,20 +549,20 @@ Index: []
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_CFG_SERVICE-ObjectnameDefinition--]</td>
-          <td class="col-duration">1.21</td>
+          <td class="col-duration">0.83</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: GPON_CFG_SERVICE, RE:ObjectnameDefinition, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
        CD_SERV_APROV        CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  GPON_CFG_SERVICE  ObjectnameDefinition              -
 
-------&gt; Resultado esperado: GPON_CFG_SERVICE ObjectnameDefinition -
-------&gt; Resultado Atual:    GPON_CFG_SERVICE ObjectnameDefinition - 
+------&gt; Resultado esperado: SA:GPON_CFG_SERVICE RE:ObjectnameDefinition OE:-
+------&gt; Resultado Atual:    SA:GPON_CFG_SERVICE RE:ObjectnameDefinition OE:- 
 
 
 <br/></div></td></tr></tbody>
@@ -433,41 +570,41 @@ Index: []
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_MODIFY_SERVICE-RackDefinition--]</td>
-          <td class="col-duration">1.18</td>
+          <td class="col-duration">1.12</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: GPON_MODIFY_SERVICE, RE:RackDefinition, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
           CD_SERV_APROV  CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  GPON_MODIFY_SERVICE  RackDefinition              -
 
-------&gt; Resultado esperado: GPON_MODIFY_SERVICE RackDefinition -
-------&gt; Resultado Atual:    GPON_MODIFY_SERVICE RackDefinition - 
+------&gt; Resultado esperado: SA:GPON_MODIFY_SERVICE RE:RackDefinition OE:-
+------&gt; Resultado Atual:    SA:GPON_MODIFY_SERVICE RE:RackDefinition OE:- 
 
 
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_MODIFY_SERVICE-NumeroOsDefinition--0]</td>
-          <td class="col-duration">1.15</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_MODIFY_SERVICE-NumeroOsDefinition--]</td>
+          <td class="col-duration">1.36</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: GPON_MODIFY_SERVICE, RE:NumeroOsDefinition, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
           CD_SERV_APROV      CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  GPON_MODIFY_SERVICE  NumeroOsDefinition              -
 
-------&gt; Resultado esperado: GPON_MODIFY_SERVICE NumeroOsDefinition -
-------&gt; Resultado Atual:    GPON_MODIFY_SERVICE NumeroOsDefinition - 
+------&gt; Resultado esperado: SA:GPON_MODIFY_SERVICE RE:NumeroOsDefinition OE:-
+------&gt; Resultado Atual:    SA:GPON_MODIFY_SERVICE RE:NumeroOsDefinition OE:- 
 
 
 <br/></div></td></tr></tbody>
@@ -475,20 +612,20 @@ Index: []
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_MODIFY_SERVICE-ObjectnameDefinition--]</td>
-          <td class="col-duration">0.63</td>
+          <td class="col-duration">1.24</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: GPON_MODIFY_SERVICE, RE:ObjectnameDefinition, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
           CD_SERV_APROV        CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  GPON_MODIFY_SERVICE  ObjectnameDefinition              -
 
-------&gt; Resultado esperado: GPON_MODIFY_SERVICE ObjectnameDefinition -
-------&gt; Resultado Atual:    GPON_MODIFY_SERVICE ObjectnameDefinition - 
+------&gt; Resultado esperado: SA:GPON_MODIFY_SERVICE RE:ObjectnameDefinition OE:-
+------&gt; Resultado Atual:    SA:GPON_MODIFY_SERVICE RE:ObjectnameDefinition OE:- 
 
 
 <br/></div></td></tr></tbody>
@@ -496,20 +633,20 @@ Index: []
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_ONT_RESET-RackDefinition--]</td>
-          <td class="col-duration">0.68</td>
+          <td class="col-duration">1.06</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: GPON_ONT_RESET, RE:RackDefinition, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
      CD_SERV_APROV  CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  GPON_ONT_RESET  RackDefinition              -
 
-------&gt; Resultado esperado: GPON_ONT_RESET RackDefinition -
-------&gt; Resultado Atual:    GPON_ONT_RESET RackDefinition - 
+------&gt; Resultado esperado: SA:GPON_ONT_RESET RE:RackDefinition OE:-
+------&gt; Resultado Atual:    SA:GPON_ONT_RESET RE:RackDefinition OE:- 
 
 
 <br/></div></td></tr></tbody>
@@ -517,20 +654,20 @@ Index: []
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_SUSPEND_TEMPLATE-NumeroOsDefinition--]</td>
-          <td class="col-duration">1.25</td>
+          <td class="col-duration">1.22</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: GPON_SUSPEND_TEMPLATE, RE:NumeroOsDefinition, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
             CD_SERV_APROV      CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  GPON_SUSPEND_TEMPLATE  NumeroOsDefinition              -
 
-------&gt; Resultado esperado: GPON_SUSPEND_TEMPLATE NumeroOsDefinition -
-------&gt; Resultado Atual:    GPON_SUSPEND_TEMPLATE NumeroOsDefinition - 
+------&gt; Resultado esperado: SA:GPON_SUSPEND_TEMPLATE RE:NumeroOsDefinition OE:-
+------&gt; Resultado Atual:    SA:GPON_SUSPEND_TEMPLATE RE:NumeroOsDefinition OE:- 
 
 
 <br/></div></td></tr></tbody>
@@ -538,41 +675,56 @@ Index: []
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_SUSPEND_TEMPLATE-RackDefinition--]</td>
-          <td class="col-duration">1.23</td>
+          <td class="col-duration">1.15</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
 ------&gt; parametros: SA: GPON_SUSPEND_TEMPLATE, RE:RackDefinition, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RE x OE:
 
             CD_SERV_APROV  CD_REGRA_ENRIQ ORDEM_EXECUCAO
 0  GPON_SUSPEND_TEMPLATE  RackDefinition              -
 
-------&gt; Resultado esperado: GPON_SUSPEND_TEMPLATE RackDefinition -
-------&gt; Resultado Atual:    GPON_SUSPEND_TEMPLATE RackDefinition - 
+------&gt; Resultado esperado: SA:GPON_SUSPEND_TEMPLATE RE:RackDefinition OE:-
+------&gt; Resultado Atual:    SA:GPON_SUSPEND_TEMPLATE RE:RackDefinition OE:- 
 
 
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_MODIFY_SERVICE-NumeroOsDefinition--1]</td>
-          <td class="col-duration">0.64</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[INSTALAR_INFRA_NASS-TEMPHsiAssetRouter-InserirHsiSamTEMP-SAM01--]</td>
+          <td class="col-duration">1.42</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RE x OE
-------&gt; parametros: SA: GPON_MODIFY_SERVICE, RE:NumeroOsDefinition, OE: -
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:INSTALAR_INFRA_NASS, RR:TEMPHsiAssetRouter, SR:InserirHsiSamTEMP, ELR:SAM01, OE: -
 ------&gt; Executando query no banco...
-------&gt; Resultado da query - RE x SA x OE:
+------&gt; Resultado da query - SA x RR x SR x ELR x OE
 
-          CD_SERV_APROV      CD_REGRA_ENRIQ ORDEM_EXECUCAO
-0  GPON_MODIFY_SERVICE  NumeroOsDefinition              -
+         CD_SERV_APROV     CD_REGRA_ROTEAM  ... CD_ELEMEN_REDE ORDEM_EXECUCAO
+0  INSTALAR_INFRA_NASS  TEMPHsiAssetRouter  ...          SAM01              2
 
-------&gt; Resultado esperado: GPON_MODIFY_SERVICE NumeroOsDefinition -
-------&gt; Resultado Atual:    GPON_MODIFY_SERVICE NumeroOsDefinition - 
+[1 rows x 5 columns]
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[INSTALAR_INFRA_NASS-TEMPIptvAssetRouter-AdicionarIptvSamTEMP----]</td>
+          <td class="col-duration">0.75</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>------&gt; Teste SA x RR x SR x ELR x OE
+------&gt; parametros: SA:INSTALAR_INFRA_NASS, RR:TEMPIptvAssetRouter, SR:AdicionarIptvSamTEMP, ELR:-, OE: -
+------&gt; Executando query no banco...
+------&gt; Resultado da query - SA x RR x SR x ELR x OE
 
+         CD_SERV_APROV      CD_REGRA_ROTEAM  ... CD_ELEMEN_REDE ORDEM_EXECUCAO
+0  INSTALAR_INFRA_NASS  TEMPIptvAssetRouter  ...          SAM01              3
 
+[1 rows x 5 columns]
 <br/></div></td></tr></tbody></table></body></html>

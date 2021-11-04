@@ -31,7 +31,7 @@ class PlanoTeste:
 
 
     def _find_rule_no_df_testresult(self, nome_coluna, nome_rule, df: DataFrame):
-        """ retorna linha do DataFrame referente à regra de enriquecimento """
+        """ retorna linha do DataFrame referente à regra """
         self.df_test_case_result = df.loc[df[nome_coluna] == nome_rule]
         return self.df_test_case_result
 
@@ -131,19 +131,46 @@ class PlanoTeste:
         #pega 
         self._find_rule_no_df_testresult(CD_REGRA_ENRIQ, re_ct, df)
         
-        serv_aprov_bd = self.get_valor_do_campo(0, 0, self.df_test_case_result)
-        regra_enrich_do_bd = self.get_valor_do_campo(0, 1, self.df_test_case_result)
-        ord_exec_do_bd = self.get_valor_do_campo(0, 2, self.df_test_case_result)
+        serv_aprov_bd = ""
+        regra_enrich_do_bd = ""
+        ord_exec_do_bd = ""
         
-        print(f"\n------> Resultado esperado: {sa_ct} {re_ct} {ord_exec_ct}")
-        print(f"------> Resultado Atual:    {serv_aprov_bd} {regra_enrich_do_bd} {ord_exec_do_bd} \n\n")
+        if self.df_test_case_result.size != 0:
+            serv_aprov_bd = self.get_valor_do_campo(0, 0, self.df_test_case_result)
+            regra_enrich_do_bd = self.get_valor_do_campo(0, 1, self.df_test_case_result)
+            ord_exec_do_bd = self.get_valor_do_campo(0, 2, self.df_test_case_result)
+        
+        print(f"\n--> Resultado esperado: SA:{sa_ct} RE:{re_ct} OE:{ord_exec_ct}")
+        print(f"--> Resultado Atual:    SA:{serv_aprov_bd} RE:{regra_enrich_do_bd} OE:{ord_exec_do_bd} \n\n")
 
         assert re_ct == regra_enrich_do_bd
         assert ord_exec_ct == ord_exec_do_bd
 
 
 
+    def assert_router_rule(self, sa_ct, rr_ct, sr_ct, ele_ct, ord_exec_ct, df: DataFrame):
+            """ faz o assert da regra de enriquecimento """
+            #pega 
+            self._find_rule_no_df_testresult(CD_REGRA_ROTEAM, rr_ct, df)
+            
+            serv_aprov_bd = ""
+            regra_router_bd = ""
+            serv_rede_bd = ""
+            ele_rede_bd = ""
+            ord_exec_do_bd = ""
+            #CD_SERV_APROV, CD_REGRA_ROTEAM, CD_SERVIC_REDE, CD_ELEMEN_REDE, ORDEM_EXECUCAO_ROUTER
+            if self.df_test_case_result.size != 0:
+                serv_aprov_bd = self.get_valor_do_campo(0, 0, self.df_test_case_result)
+                regra_router_bd = self.get_valor_do_campo(0, 1, self.df_test_case_result)
+                serv_rede_bd = self.get_valor_do_campo(0, 2, self.df_test_case_result)
+                ele_rede_bd = self.get_valor_do_campo(0, 3, self.df_test_case_result)
+                ord_exec_do_bd = self.get_valor_do_campo(0, 4, self.df_test_case_result)
+            
+            print(f"\n--> Resultado esperado: SA:{sa_ct} RR:{rr_ct} SR:{sr_ct} ELE:{ele_ct} OE:{ord_exec_ct}")
+            print(f"--> Resultado Atual:    SA:{serv_aprov_bd} RR:{regra_router_bd} SR:{serv_rede_bd} ELE:{ele_rede_bd} OE:{ord_exec_do_bd} \n\n")
 
+            assert rr_ct == regra_router_bd
+            assert ord_exec_ct == ord_exec_do_bd
 
 
 
