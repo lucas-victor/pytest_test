@@ -35,10 +35,13 @@ class SqlQuery:
         self.__string_sql = SA_X_ROUTER_QUERY.format(sa = serv_aprov, rotea = regra_rotea)
 
     def _read_sql_query_pd(self, query_preparada, db_con):
-        
-        self.df_result_sql = pd.read_sql_query(query_preparada, db_con)
+        #self.df_result_sql = ""
+        pd.set_option('display.max_columns', 100)
+        pd.set_option('display.width', 1000)
+        self.df_result_sql = pd.read_sql_query(query_preparada, db_con).fillna("-")
+       
         #self.df_result_sql = self.df_result_sql.where(self.df_result_sql==None, "-")
-        self.df_result_sql = self.df_result_sql.fillna("-")
+        #self.df_result_sql = self.df_result_sql.fillna("-")
         #return self.df_result_sql
 
     # def _find_rule_no_df(self, nome_coluna, nome_rule):

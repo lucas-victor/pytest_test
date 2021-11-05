@@ -169,7 +169,10 @@ class PlanoTeste:
             print(f"\n--> Resultado esperado: SA:{sa_ct} RR:{rr_ct} SR:{sr_ct} ELE:{ele_ct} OE:{ord_exec_ct}")
             print(f"--> Resultado Atual:    SA:{serv_aprov_bd} RR:{regra_router_bd} SR:{serv_rede_bd} ELE:{ele_rede_bd} OE:{ord_exec_do_bd} \n\n")
 
+            assert sa_ct == serv_aprov_bd
             assert rr_ct == regra_router_bd
+            assert sr_ct == serv_rede_bd
+            assert ele_ct == ele_rede_bd
             assert ord_exec_ct == ord_exec_do_bd
 
 

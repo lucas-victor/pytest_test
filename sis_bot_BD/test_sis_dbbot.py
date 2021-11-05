@@ -1,6 +1,7 @@
 from pytest import mark, fixture
 from IPython.display import display
 import pytest
+
 from sis_bot_BD.plano_test import *
 from sis_bot_BD.sql_query import *
 from sis_bot_BD.connection import *
@@ -32,7 +33,8 @@ def test_sa_x_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):
     else:
         sql.parametriza_sql_sa_x_regra_enrich(ct_serv_aprov, ct_regra_enrich)
         sql.executa_query_db()
-        print(f"--> Resultado da query - SA x RE x OE:\n\n {sql.get_result_sql}")
+        print(f"--> Resultado da query - SA x RE x OE:\n")
+        display(sql.get_result_sql)
         tp.assert_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec, sql.get_result_sql)
 
 
@@ -47,11 +49,11 @@ def test_sa_x_router_rule(ct_serv_aprov, ct_regra_router, ct_serv_rede, ct_eleme
     print(f"--> parametros: SA:{ct_serv_aprov}, RR:{ct_regra_router}, SR:{ct_serv_rede}, ELR:{ct_elemen_rede}, OE: {ct_ord_exec}")
 
     if ct_regra_router == "-":
-        print("--> Caso de teste não possui regra de enriquecimento a ser testada.")
+        print("--> Caso de teste não possui regra de roteamento a ser testada.")
         pytest.skip()
     else:
         sql.parametriza_sql_sa_x_router_rule_query(ct_serv_aprov, ct_regra_router)
         sql.executa_query_db()
         print(f"--> Resultado da query - SA x RR x SR x ELR x OE\n") #{df_result_query}
         display(sql.get_result_sql)
-        #assert_enrich_rule(ct_regra_enrich, ct_ord_exec, df_result_query)
+        tp.assert_router_rule(ct_serv_aprov, ct_regra_router, ct_serv_rede, ct_elemen_rede, ct_ord_exec, sql.get_result_sql)

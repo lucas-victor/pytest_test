@@ -243,7 +243,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 04-Nov-2021 at 22:12:36 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 04-Nov-2021 at 20:47:32 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -259,8 +259,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.8.10</td></tr></table>
     <h2>Summary</h2>
-    <p>28 tests ran in 24.57 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">28 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">4 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>27 tests ran in 24.91 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">25 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">5 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">2 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -271,6 +271,61 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_SUSPEND_TEMPLATE-fheuasihfuiesahfuiehsai--]</td>
+          <td class="col-duration">0.63</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ct_serv_aprov = &#x27;GPON_SUSPEND_TEMPLATE&#x27;, ct_regra_enrich = &#x27;fheuasihfuiesahfuiehsai&#x27;, ct_ord_exec = &#x27;-&#x27;<br/><br/>    @mark.parametrize(&quot;ct_serv_aprov, ct_regra_enrich, ct_ord_exec&quot;, tp.get_testcases_enrich_rule())<br/>    def test_sa_x_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec):<br/>        &quot;&quot;&quot;<br/>        Testa as regras de enriquecimento do serviço de aprovisionamento.<br/>        &quot;&quot;&quot;<br/>        print(f&quot;--&gt; Teste SA x RE x OE&quot;)<br/>        print(f&quot;--&gt; parametros: SA: {ct_serv_aprov}, RE:{ct_regra_enrich}, OE: {ct_ord_exec}&quot;)<br/>    <br/>        if ct_regra_enrich == &quot;-&quot;:<br/>            print(&quot;--&gt; Caso de teste não possui regra de enriquecimento a ser testada.&quot;)<br/>            pytest.skip()<br/>        else:<br/>            sql.parametriza_sql_sa_x_regra_enrich(ct_serv_aprov, ct_regra_enrich)<br/>            sql.executa_query_db()<br/>            print(f&quot;--&gt; Resultado da query - SA x RE x OE:\n&quot;)<br/>            display(sql.get_result_sql)<br/>&gt;           tp.assert_enrich_rule(ct_serv_aprov, ct_regra_enrich, ct_ord_exec, sql.get_result_sql)<br/><br/>test_sis_dbbot.py:37: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;sis_bot_BD.plano_test.PlanoTeste object at 0x7f50c6e3dd60&gt;, sa_ct = &#x27;GPON_SUSPEND_TEMPLATE&#x27;, re_ct = &#x27;fheuasihfuiesahfuiehsai&#x27;, ord_exec_ct = &#x27;-&#x27;, df = Empty DataFrame<br/>Columns: [CD_SERV_APROV, CD_REGRA_ENRIQ, ORDEM_EXECUCAO]<br/>Index: []<br/><br/>    def assert_enrich_rule(self, sa_ct, re_ct, ord_exec_ct, df: DataFrame):<br/>        &quot;&quot;&quot; faz o assert da regra de enriquecimento &quot;&quot;&quot;<br/>        #pega<br/>        self._find_rule_no_df_testresult(CD_REGRA_ENRIQ, re_ct, df)<br/>    <br/>        serv_aprov_bd = &quot;&quot;<br/>        regra_enrich_do_bd = &quot;&quot;<br/>        ord_exec_do_bd = &quot;&quot;<br/>    <br/>        if self.df_test_case_result.size != 0:<br/>            serv_aprov_bd = self.get_valor_do_campo(0, 0, self.df_test_case_result)<br/>            regra_enrich_do_bd = self.get_valor_do_campo(0, 1, self.df_test_case_result)<br/>            ord_exec_do_bd = self.get_valor_do_campo(0, 2, self.df_test_case_result)<br/>    <br/>        print(f&quot;\n--&gt; Resultado esperado: SA:{sa_ct} RE:{re_ct} OE:{ord_exec_ct}&quot;)<br/>        print(f&quot;--&gt; Resultado Atual:    SA:{serv_aprov_bd} RE:{regra_enrich_do_bd} OE:{ord_exec_do_bd} \n\n&quot;)<br/>    <br/>&gt;       assert re_ct == regra_enrich_do_bd<br/><span class="error">E       AssertionError</span><br/><br/>plano_test.py:146: AssertionError<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RE x OE
+--&gt; parametros: SA: GPON_SUSPEND_TEMPLATE, RE:fheuasihfuiesahfuiehsai, OE: -
+--&gt; Executando query no banco...
+--&gt; Resultado da query - SA x RE x OE:
+
+Empty DataFrame
+Columns: [CD_SERV_APROV, CD_REGRA_ENRIQ, ORDEM_EXECUCAO]
+Index: []
+
+--&gt; Resultado esperado: SA:GPON_SUSPEND_TEMPLATE RE:fheuasihfuiesahfuiehsai OE:-
+--&gt; Resultado Atual:    SA: RE: OE: 
+
+
+<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[INSTALAR_INFRA_NASS-TEMPIptvAssetRouter-AdicionarIptvSamTEMP---3.0]</td>
+          <td class="col-duration">0.68</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">ct_serv_aprov = &#x27;INSTALAR_INFRA_NASS&#x27;, ct_regra_router = &#x27;TEMPIptvAssetRouter&#x27;, ct_serv_rede = &#x27;AdicionarIptvSamTEMP&#x27;, ct_elemen_rede = &#x27;-&#x27;, ct_ord_exec = 3.0<br/><br/>    @mark.parametrize (&quot;ct_serv_aprov, ct_regra_router, ct_serv_rede, ct_elemen_rede, ct_ord_exec&quot;, tp.get_testcases_sa_x_router())<br/>    def test_sa_x_router_rule(ct_serv_aprov, ct_regra_router, ct_serv_rede, ct_elemen_rede, ct_ord_exec):<br/>        &quot;&quot;&quot;<br/>        Testa as regras de roteamento do serviço de aprovisionamento.<br/>        &quot;&quot;&quot;<br/>        #&quot;CD_SERV_APROV&quot;, &quot;CD_REGRA_ROTEAM&quot;, &quot;CD_SERVIC_REDE&quot;, &quot;CD_ELEMEN_REDE&quot;, &quot;ORDEM_EXECUCAO&quot;]<br/>        print(f&quot;--&gt; Teste SA x RR x SR x ELR x OE&quot;)<br/>        print(f&quot;--&gt; parametros: SA:{ct_serv_aprov}, RR:{ct_regra_router}, SR:{ct_serv_rede}, ELR:{ct_elemen_rede}, OE: {ct_ord_exec}&quot;)<br/>    <br/>        if ct_regra_router == &quot;-&quot;:<br/>            print(&quot;--&gt; Caso de teste não possui regra de roteamento a ser testada.&quot;)<br/>            pytest.skip()<br/>        else:<br/>            sql.parametriza_sql_sa_x_router_rule_query(ct_serv_aprov, ct_regra_router)<br/>            sql.executa_query_db()<br/>            print(f&quot;--&gt; Resultado da query - SA x RR x SR x ELR x OE\n&quot;) #{df_result_query}<br/>            display(sql.get_result_sql)<br/>&gt;           tp.assert_router_rule(ct_serv_aprov, ct_regra_router, ct_serv_rede, ct_elemen_rede, ct_ord_exec, sql.get_result_sql)<br/><br/>test_sis_dbbot.py:58: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;sis_bot_BD.plano_test.PlanoTeste object at 0x7f50c6e3dd60&gt;, sa_ct = &#x27;INSTALAR_INFRA_NASS&#x27;, rr_ct = &#x27;TEMPIptvAssetRouter&#x27;, sr_ct = &#x27;AdicionarIptvSamTEMP&#x27;, ele_ct = &#x27;-&#x27;, ord_exec_ct = 3.0<br/>df =          CD_SERV_APROV      CD_REGRA_ROTEAM        CD_SERVIC_REDE CD_ELEMEN_REDE  ORDEM_EXECUCAO<br/>0  INSTALAR_INFRA_NASS  TEMPIptvAssetRouter  AdicionarIptvSamTEMP          SAM01               3<br/><br/>    def assert_router_rule(self, sa_ct, rr_ct, sr_ct, ele_ct, ord_exec_ct, df: DataFrame):<br/>            &quot;&quot;&quot; faz o assert da regra de enriquecimento &quot;&quot;&quot;<br/>            #pega<br/>            self._find_rule_no_df_testresult(CD_REGRA_ROTEAM, rr_ct, df)<br/>    <br/>            serv_aprov_bd = &quot;&quot;<br/>            regra_router_bd = &quot;&quot;<br/>            serv_rede_bd = &quot;&quot;<br/>            ele_rede_bd = &quot;&quot;<br/>            ord_exec_do_bd = &quot;&quot;<br/>            #CD_SERV_APROV, CD_REGRA_ROTEAM, CD_SERVIC_REDE, CD_ELEMEN_REDE, ORDEM_EXECUCAO_ROUTER<br/>            if self.df_test_case_result.size != 0:<br/>                serv_aprov_bd = self.get_valor_do_campo(0, 0, self.df_test_case_result)<br/>                regra_router_bd = self.get_valor_do_campo(0, 1, self.df_test_case_result)<br/>                serv_rede_bd = self.get_valor_do_campo(0, 2, self.df_test_case_result)<br/>                ele_rede_bd = self.get_valor_do_campo(0, 3, self.df_test_case_result)<br/>                ord_exec_do_bd = self.get_valor_do_campo(0, 4, self.df_test_case_result)<br/>    <br/>            print(f&quot;\n--&gt; Resultado esperado: SA:{sa_ct} RR:{rr_ct} SR:{sr_ct} ELE:{ele_ct} OE:{ord_exec_ct}&quot;)<br/>            print(f&quot;--&gt; Resultado Atual:    SA:{serv_aprov_bd} RR:{regra_router_bd} SR:{serv_rede_bd} ELE:{ele_rede_bd} OE:{ord_exec_do_bd} \n\n&quot;)<br/>    <br/>            assert sa_ct == serv_aprov_bd<br/>            assert rr_ct == regra_router_bd<br/>            assert sr_ct == serv_rede_bd<br/>&gt;           assert ele_ct == ele_rede_bd<br/><span class="error">E           AssertionError</span><br/><br/>plano_test.py:175: AssertionError<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RR x SR x ELR x OE
+--&gt; parametros: SA:INSTALAR_INFRA_NASS, RR:TEMPIptvAssetRouter, SR:AdicionarIptvSamTEMP, ELR:-, OE: 3.0
+--&gt; Executando query no banco...
+--&gt; Resultado da query - SA x RR x SR x ELR x OE
+
+         CD_SERV_APROV      CD_REGRA_ROTEAM        CD_SERVIC_REDE CD_ELEMEN_REDE  ORDEM_EXECUCAO
+0  INSTALAR_INFRA_NASS  TEMPIptvAssetRouter  AdicionarIptvSamTEMP          SAM01               3
+
+--&gt; Resultado esperado: SA:INSTALAR_INFRA_NASS RR:TEMPIptvAssetRouter SR:AdicionarIptvSamTEMP ELE:- OE:3.0
+--&gt; Resultado Atual:    SA:INSTALAR_INFRA_NASS RR:TEMPIptvAssetRouter SR:AdicionarIptvSamTEMP ELE:SAM01 OE:3 
+
+
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[INSTALAR_INFRA_NASS----]</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 31, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RE x OE
+--&gt; parametros: SA: INSTALAR_INFRA_NASS, RE:-, OE: -
+--&gt; Caso de teste não possui regra de enriquecimento a ser testada.
+<br/></div></td></tr></tbody>
       <tbody class="skipped results-table-row">
         <tr>
           <td class="col-result">Skipped</td>
@@ -279,7 +334,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 32, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RE x OE
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 31, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RE x OE
 --&gt; parametros: SA: GPON_ONT_RESET, RE:-, OE: -
 --&gt; Caso de teste não possui regra de enriquecimento a ser testada.
 <br/></div></td></tr></tbody>
@@ -291,7 +346,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 32, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RE x OE
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 31, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RE x OE
 --&gt; parametros: SA: GPON_ONT_RESET, RE:-, OE: -
 --&gt; Caso de teste não possui regra de enriquecimento a ser testada.
 <br/></div></td></tr></tbody>
@@ -303,48 +358,27 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 32, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RE x OE
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 31, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RE x OE
 --&gt; parametros: SA: GPON_SUSPEND_TEMPLATE, RE:-, OE: -
 --&gt; Caso de teste não possui regra de enriquecimento a ser testada.
 <br/></div></td></tr></tbody>
       <tbody class="skipped results-table-row">
         <tr>
           <td class="col-result">Skipped</td>
-          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[INSTALAR_INFRA_NASS--------]</td>
+          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_SUSPEND_TEMPLATE--------]</td>
           <td class="col-duration">0.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 53, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RR x SR x ELR x OE
---&gt; parametros: SA:INSTALAR_INFRA_NASS, RR:-, SR:-, ELR:-, OE: -
+            <div class="log">(&#x27;/home/lucasvictor/PycharmProjects/AluraCursoPython/sis_bot_BD/test_sis_dbbot.py&#x27;, 52, &#x27;Skipped&#x27;)<br/> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RR x SR x ELR x OE
+--&gt; parametros: SA:GPON_SUSPEND_TEMPLATE, RR:-, SR:-, ELR:-, OE: -
 --&gt; Caso de teste não possui regra de roteamento a ser testada.
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[INSTALAR_INFRA_NASS-AcessoAssetIdValidation--]</td>
-          <td class="col-duration">1.22</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RE x OE
---&gt; parametros: SA: INSTALAR_INFRA_NASS, RE:AcessoAssetIdValidation, OE: -
---&gt; Executando query no banco...
---&gt; Resultado da query - SA x RE x OE:
-
-         CD_SERV_APROV           CD_REGRA_ENRIQ ORDEM_EXECUCAO
-0  INSTALAR_INFRA_NASS  AcessoAssetIdValidation              -
-
---&gt; Resultado esperado: SA:INSTALAR_INFRA_NASS RE:AcessoAssetIdValidation OE:-
---&gt; Resultado Atual:    SA:INSTALAR_INFRA_NASS RE:AcessoAssetIdValidation OE:- 
-
-
-<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[INSTALAR_INFRA_NASS-LineIdIptv--]</td>
-          <td class="col-duration">0.99</td>
+          <td class="col-duration">0.70</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -385,29 +419,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[INSTALAR_INFRA_NASS-LineIdHsiValidation--]</td>
-          <td class="col-duration">0.72</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RE x OE
---&gt; parametros: SA: INSTALAR_INFRA_NASS, RE:LineIdHsiValidation, OE: -
---&gt; Executando query no banco...
---&gt; Resultado da query - SA x RE x OE:
-
-         CD_SERV_APROV       CD_REGRA_ENRIQ ORDEM_EXECUCAO
-0  INSTALAR_INFRA_NASS  LineIdHsiValidation              -
-
---&gt; Resultado esperado: SA:INSTALAR_INFRA_NASS RE:LineIdHsiValidation OE:-
---&gt; Resultado Atual:    SA:INSTALAR_INFRA_NASS RE:LineIdHsiValidation OE:- 
-
-
-<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_CFG_SERVICE-RackDefinition--]</td>
-          <td class="col-duration">0.88</td>
+          <td class="col-duration">0.70</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -428,7 +441,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_CFG_SERVICE-NumeroOsDefinition--]</td>
-          <td class="col-duration">1.36</td>
+          <td class="col-duration">0.68</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -449,7 +462,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_CFG_SERVICE-ObjectnameDefinition--]</td>
-          <td class="col-duration">0.79</td>
+          <td class="col-duration">0.72</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -470,7 +483,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_MODIFY_SERVICE-RackDefinition--]</td>
-          <td class="col-duration">0.70</td>
+          <td class="col-duration">0.76</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -491,7 +504,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_MODIFY_SERVICE-NumeroOsDefinition--]</td>
-          <td class="col-duration">0.74</td>
+          <td class="col-duration">0.95</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -512,7 +525,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_MODIFY_SERVICE-ObjectnameDefinition--]</td>
-          <td class="col-duration">0.65</td>
+          <td class="col-duration">0.66</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -533,7 +546,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_ONT_RESET-RackDefinition--]</td>
-          <td class="col-duration">0.75</td>
+          <td class="col-duration">0.73</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -554,7 +567,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_SUSPEND_TEMPLATE-NumeroOsDefinition--]</td>
-          <td class="col-duration">0.65</td>
+          <td class="col-duration">0.69</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -575,7 +588,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_enrich_rule[GPON_SUSPEND_TEMPLATE-RackDefinition--]</td>
-          <td class="col-duration">0.71</td>
+          <td class="col-duration">0.74</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -596,7 +609,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[INSTALAR_INFRA_NASS-TEMPHsiAssetRouter-InserirHsiSamTEMP-SAM01-2.0]</td>
-          <td class="col-duration">1.29</td>
+          <td class="col-duration">0.65</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -616,29 +629,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[INSTALAR_INFRA_NASS-TEMPIptvAssetRouter-AdicionarIptvSamTEMP-SAM01-3.0]</td>
-          <td class="col-duration">1.05</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>--&gt; Teste SA x RR x SR x ELR x OE
---&gt; parametros: SA:INSTALAR_INFRA_NASS, RR:TEMPIptvAssetRouter, SR:AdicionarIptvSamTEMP, ELR:SAM01, OE: 3.0
---&gt; Executando query no banco...
---&gt; Resultado da query - SA x RR x SR x ELR x OE
-
-         CD_SERV_APROV      CD_REGRA_ROTEAM        CD_SERVIC_REDE CD_ELEMEN_REDE  ORDEM_EXECUCAO
-0  INSTALAR_INFRA_NASS  TEMPIptvAssetRouter  AdicionarIptvSamTEMP          SAM01               3
-
---&gt; Resultado esperado: SA:INSTALAR_INFRA_NASS RR:TEMPIptvAssetRouter SR:AdicionarIptvSamTEMP ELE:SAM01 OE:3.0
---&gt; Resultado Atual:    SA:INSTALAR_INFRA_NASS RR:TEMPIptvAssetRouter SR:AdicionarIptvSamTEMP ELE:SAM01 OE:3 
-
-
-<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[INSTALAR_INFRA_NASS-DefaultRouterRule-AdicionarInfraSam-SAM01-1.0]</td>
-          <td class="col-duration">0.81</td>
+          <td class="col-duration">0.66</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -659,7 +651,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_CFG_SERVICE-NokiaOLTRouter-ConfigurarTemplateHsiApc-SMP01--]</td>
-          <td class="col-duration">0.64</td>
+          <td class="col-duration">0.69</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -680,7 +672,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_CFG_SERVICE-HuaweiOLTRouter-ConfigurarTemplateHsiIbridge-NCEGPON_NETQ--]</td>
-          <td class="col-duration">1.08</td>
+          <td class="col-duration">1.20</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -701,7 +693,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_CFG_SERVICE-ZteOLTRouter-ConfigurarTemplateHsiZteGpon-ZTE_GPON--]</td>
-          <td class="col-duration">0.69</td>
+          <td class="col-duration">1.28</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -722,7 +714,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_MODIFY_SERVICE-NokiaOLTRouter-MudarVelocidadeHsiApc-SMP01--]</td>
-          <td class="col-duration">0.70</td>
+          <td class="col-duration">1.23</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -743,7 +735,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_MODIFY_SERVICE-HuaweiOLTRouter-MudarVelocidadeHsiIbridge-NCEGPON_NETQ--]</td>
-          <td class="col-duration">0.66</td>
+          <td class="col-duration">1.22</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -764,7 +756,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_MODIFY_SERVICE-ZteOLTRouter-ConfigurarTemplateHsiZteGpon-ZTE_GPON--]</td>
-          <td class="col-duration">0.67</td>
+          <td class="col-duration">1.02</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -785,7 +777,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_ONT_RESET-NokiaOLTRouter-ResetOntAMS-AMS01--]</td>
-          <td class="col-duration">0.68</td>
+          <td class="col-duration">1.22</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -806,7 +798,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_ONT_RESET-HuaweiOLTRouter-ResetOntIbridge-NCEGPON_NETQ--]</td>
-          <td class="col-duration">0.68</td>
+          <td class="col-duration">1.25</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -827,7 +819,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_ONT_RESET-ZteOLTRouter-ResetOntZte-ZTE_NetQ--]</td>
-          <td class="col-duration">0.76</td>
+          <td class="col-duration">1.34</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -848,7 +840,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_SUSPEND_TEMPLATE-HuaweiOLTRouter-SuspenderHsiIbridge-NCEGPON_NETQ--]</td>
-          <td class="col-duration">0.74</td>
+          <td class="col-duration">1.00</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -869,7 +861,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_SUSPEND_TEMPLATE-ZteOLTRouter-SuspenderHsiZteGpon-ZTE_GPON--]</td>
-          <td class="col-duration">0.68</td>
+          <td class="col-duration">0.65</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -890,7 +882,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">sis_bot_BD/test_sis_dbbot.py::test_sa_x_router_rule[GPON_SUSPEND_TEMPLATE-NokiaOLTRouter-SuspenderHsiApc-SMP01--]</td>
-          <td class="col-duration">0.71</td>
+          <td class="col-duration">0.75</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
